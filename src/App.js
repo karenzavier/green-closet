@@ -25,6 +25,16 @@ function App() {
   </div>
 
 
+<h2>Your Impact 🌱</h2>
+
+<div className="sustainability">
+  <p>By choosing second-hand clothing, you helped save:</p>
+  <ul>
+    <li>💧 2,500 liters of water</li>
+    <li>🌍 Reduced textile waste</li>
+    <li>♻️ Lower carbon emissions</li>
+  </ul>
+</div>
 
 
 </div>
