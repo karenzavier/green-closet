@@ -1,9 +1,10 @@
 import './App.css';
 import Header from "./components/Header";
-import ItemCard from "./components/ItemCard";
+import ItemList from "./components/ItemList";
 
 function App() {
-   const items = [
+
+  const items = [
     {
       name: "Denim Jacket",
       condition: "Good",
@@ -15,6 +16,7 @@ function App() {
       price: 1800
     }
   ];
+
   return (
     <div className="App">
       <Header />
@@ -24,15 +26,7 @@ function App() {
 
       <h2>Available Second-Hand Items</h2>
 
-{items.map((item, index) => (
-  <ItemCard
-    key={index}
-    name={item.name}
-    condition={item.condition}
-    price={item.price}
-  />
-))}
-
+      <ItemList items={items} />
 
       <h2>Your Impact 🌱</h2>
 
