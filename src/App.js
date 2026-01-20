@@ -1,6 +1,8 @@
 import './App.css';
 import Header from "./components/Header";
 import ItemList from "./components/ItemList";
+import SustainabilityImpact from "./components/SustainabilityImpact";
+
 
 function App() {
 
@@ -28,16 +30,8 @@ function App() {
 
       <ItemList items={items} />
 
-      <h2>Your Impact 🌱</h2>
+      <SustainabilityImpact itemCount={items.length} />
 
-      <div className="sustainability">
-        <p>By choosing second-hand clothing, you helped save:</p>
-        <ul>
-          <li>💧 2,500 liters of water</li>
-          <li>🌍 Reduced textile waste</li>
-          <li>♻️ Lower carbon emissions</li>
-        </ul>
-      </div>
     </div>
   );
 }
