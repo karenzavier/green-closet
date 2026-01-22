@@ -2,23 +2,14 @@ import './App.css';
 import Header from "./components/Header";
 import ItemList from "./components/ItemList";
 import SustainabilityImpact from "./components/SustainabilityImpact";
+import itemsData from "./data/itemsData";
+
 
 
 function App() {
 
-  const items = [
-    {
-      name: "Denim Jacket",
-      condition: "Good",
-      price: 2500
-    },
-    {
-      name: "Cotton Dress",
-      condition: "Like New",
-      price: 1800
-    }
-  ];
-
+  const items = itemsData;
+   
   return (
     <div className="App">
       <Header />
