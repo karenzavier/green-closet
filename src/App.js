@@ -2,13 +2,15 @@ import './App.css';
 import Header from "./components/Header";
 import ItemList from "./components/ItemList";
 import SustainabilityImpact from "./components/SustainabilityImpact";
-import itemsData from "./data/itemsData";
+import { getItems } from "./services/itemservice";
+
 
 
 
 function App() {
 
-  const items = itemsData;
+  const items = getItems();
+
    
   return (
     <div className="App">
