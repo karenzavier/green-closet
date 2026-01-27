@@ -1,15 +1,22 @@
 import './App.css';
+import { useState } from "react";
 import Header from "./components/Header";
 import ItemList from "./components/ItemList";
 import SustainabilityImpact from "./components/SustainabilityImpact";
 import { getItems } from "./services/itemservice";
 
 
-
-
 function App() {
 
-  const items = getItems();
+ 
+  const [filterCondition, setFilterCondition] = useState("All");
+
+ const items = getItems();
+
+const filteredItems =
+  filterCondition === "All"
+    ? items
+    : items.filter(item => item.condition === filterCondition);
 
    
   return (
@@ -21,7 +28,20 @@ function App() {
 
       <h2>Available Second-Hand Items</h2>
 
-      <ItemList items={items} />
+      <label>
+        Filter by condition: {" "}
+        <select 
+        value={filterCondition}
+        onChange={(e)=> setFilterCondition(e.target.value)}
+        >
+           <option value="All">All</option>
+           <option value="Good">Good</option>
+           <option value="Like New">Like New</option>
+
+        </select>
+      </label>
+
+<ItemList items={filteredItems} />
 
       <SustainabilityImpact itemCount={items.length} />
 
