@@ -10,15 +10,21 @@ function App() {
 
  
   const [filterCondition, setFilterCondition] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
+
 
  const items = getItems();
 
-const filteredItems =
-  filterCondition === "All"
-    ? items
-    : items.filter(item => item.condition === filterCondition);
+const filteredItems = items.filter(item => {
+  const matchesCondition =
+    filterCondition === "All" || item.condition === filterCondition;
 
-   
+  const matchesSearch =
+    item.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+  return matchesCondition && matchesSearch;
+});
+
   return (
     <div className="App">
       <Header />
@@ -41,7 +47,15 @@ const filteredItems =
         </select>
       </label>
 
+<input
+type="text"
+placeholder="search items..."
+value={searchTerm}
+onChange={(e) => setSearchTerm(e.target.value)}
+/>
+
 <ItemList items={filteredItems} />
+
 
       <SustainabilityImpact itemCount={items.length} />
 
