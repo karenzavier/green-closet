@@ -1,20 +1,17 @@
 import ItemCard from "./ItemCard";
 
-function ItemList({items}) {
-    return(
-        <div>
-            {items.map((item, index) =>(
-                <ItemCard
-                key={index}
-                name={item.name}
-                condition={item.condition}
-                price={item.price}
-                />
-            )
-
-        )}
-        </div>
-    );
+function ItemList({ items, onSelectItem }) {
+  return (
+    <div className="item-list">
+      {items.map((item, index) => (
+        <ItemCard
+          key={index}
+          item={item}            // pass the whole item object
+          onSelectItem={onSelectItem}  // handle click
+        />
+      ))}
+    </div>
+  );
 }
 
 export default ItemList;

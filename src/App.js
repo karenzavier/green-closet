@@ -4,12 +4,14 @@ import Header from "./components/Header";
 import ItemList from "./components/ItemList";
 import SustainabilityImpact from "./components/SustainabilityImpact";
 import { getItems } from "./services/itemservice";
+import ItemDetails from "./components/ItemDetails";
 
 function App() {
 
   const [filterCondition, setFilterCondition] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("none");
+  const [selectedItem,setSelectedItem] = useState(null);
 
   const items = getItems();
 
@@ -83,7 +85,8 @@ function App() {
       <br /><br />
 
       {/* ITEM LIST */}
-      <ItemList items={sortedItems} />
+      <ItemList items= {sortedItems} onSelectedItem={setSelectedItem}/>
+      <ItemDetails item={selectedItem}/>
 
       {/* SUSTAINABILITY IMPACT */}
       <SustainabilityImpact itemCount={items.length} />
