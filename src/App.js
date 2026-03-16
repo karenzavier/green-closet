@@ -12,20 +12,26 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("none");
   const [selectedItem,setSelectedItem] = useState(null);
+  const [categoryFilter, setCategoryFilter] = useState("All");
+
 
   const items = getItems();
 
   // FILTER + SEARCH
   const filteredItems = items.filter(item => {
 
-    const matchesCondition =
-      filterCondition === "All" || item.condition === filterCondition;
+  const matchesCondition =
+    filterCondition === "All" || item.condition === filterCondition;
 
-    const matchesSearch =
-      item.name.toLowerCase().includes(searchTerm.toLowerCase());
+  const matchesCategory =
+    categoryFilter === "All" || item.category === categoryFilter;
 
-    return matchesCondition && matchesSearch;
-  });
+  const matchesSearch =
+    item.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+  return matchesCondition && matchesCategory && matchesSearch;
+
+});
 
   // SORT
   const sortedItems = [...filteredItems].sort((a, b) => {
@@ -57,6 +63,20 @@ function App() {
         </select>
       </label>
 
+      <label>
+        Filter by category:{" "}
+        <select
+        value={categoryFilter}
+        onChange={(e) => setCategoryFilter(e.target.value)}
+        >
+          <option value="All">All</option>
+          <option value="Jackets">Jackets</option>
+          <option value="Dresses">Dresses</option>
+          <option value="Shirts">Shirts</option>
+
+        </select>
+      </label>
+
       <br /><br />
 
       {/* SEARCH */}
@@ -67,7 +87,8 @@ function App() {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
 
-      <br /><br />
+      <br />
+      <br />
 
       {/* SORT */}
       <label>
