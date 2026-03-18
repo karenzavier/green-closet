@@ -5,9 +5,13 @@ function ItemList({ items, onSelectItem }) {
     <div className="item-list">
       {items.map((item, index) => (
         <ItemCard
-          key={index}
-          item={item}            // pass the whole item object
-          onSelectItem={onSelectItem}  // handle click
+          key={index} 
+          name={item.name}
+          category={item.category}
+          condition={item.condition}
+          price={item.price} 
+           onClick={() => onSelectItem(item)}        
+          
         />
       ))}
     </div>
